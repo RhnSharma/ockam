@@ -164,8 +164,15 @@ dependencies = [
 [[package]]
 name = "core2"
 version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dbceae1ad0d3679d016526dd5cc9863156e9d394c1a9591cf7ab20bb25cab490"
+source = "git+https://github.com/antoinevg/core2.git?branch=antoinevg/add-read-to-end#3310b6fbcc7b7c9d2c48841006fb2118289390dc"
+dependencies = [
+ "memchr",
+]
+
+[[package]]
+name = "core2"
+version = "0.3.1"
+source = "git+ssh://git@github.com/ockam-network/core2.git?branch=ockam-network/add-read-to-end#3310b6fbcc7b7c9d2c48841006fb2118289390dc"
 dependencies = [
  "memchr",
 ]
@@ -466,7 +473,7 @@ name = "ockam_core"
 version = "0.27.0-dev"
 dependencies = [
  "async-trait",
- "core2",
+ "core2 0.3.1 (git+ssh://git@github.com/ockam-network/core2.git?branch=ockam-network/add-read-to-end)",
  "hashbrown",
  "heapless",
  "hex",
@@ -704,9 +711,9 @@ dependencies = [
 [[package]]
 name = "serde_bare"
 version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "adbd09b1e0b45fadbc163e4ea1f4224b451146ba4f01963c69975780c33215fa"
+source = "git+ssh://git@github.com/ockam-network/serde_bare.git?branch=ockam-network/no_std+alloc#34fa8b1230c1d48af003035e53ba32997c82082b"
 dependencies = [
+ "core2 0.3.1 (git+https://github.com/antoinevg/core2.git?branch=antoinevg/add-read-to-end)",
  "serde",
 ]
 
@@ -873,19 +880,7 @@ checksum = "09adeb8c97449311ccd28a427f96fb563e7fd31aabf994189879d9da2394b89d"
 dependencies = [
  "cfg-if",
  "pin-project-lite",
- "tracing-attributes",
  "tracing-core",
-]
-
-[[package]]
-name = "tracing-attributes"
-version = "0.1.15"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c42e6fa53307c8a17e4ccd4dc81cf5ec38db9209f59b222210375b54ee40d1e2"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -949,8 +944,7 @@ dependencies = [
 [[package]]
 name = "vsss-rs"
 version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b809fb740b3dbd450f411269eec820bbd29dee9268ea1b7c48a0f7e8f283bbb0"
+source = "git+https://github.com/antoinevg/vsss-rs.git?branch=antoinevg/no_std#00f27ce80c21ea7be7732e7fb3046779eab256ed"
 dependencies = [
  "ff",
  "group",

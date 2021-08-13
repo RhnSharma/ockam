@@ -224,7 +224,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ab5ef0d4909ef3724cc8cce6ccc8572c5c817592e9285f5464f8e86f8bd3726e"
 dependencies = [
  "ahash",
- "serde",
 ]
 
 [[package]]
@@ -614,8 +613,7 @@ dependencies = [
 [[package]]
 name = "vsss-rs"
 version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b809fb740b3dbd450f411269eec820bbd29dee9268ea1b7c48a0f7e8f283bbb0"
+source = "git+https://github.com/antoinevg/vsss-rs.git?branch=antoinevg/no_std#00f27ce80c21ea7be7732e7fb3046779eab256ed"
 dependencies = [
  "ff",
  "group",

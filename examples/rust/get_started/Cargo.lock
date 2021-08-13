@@ -822,7 +822,7 @@ dependencies = [
  "rand 0.8.4",
  "serde",
  "serde-big-array",
- "serde_bare 0.4.0",
+ "serde_bare",
  "sha2",
  "signature_bbs_plus",
  "signature_bls",
@@ -844,7 +844,7 @@ dependencies = [
  "ockam_vault_sync_core",
  "rand 0.8.4",
  "serde",
- "serde_bare 0.4.0",
+ "serde_bare",
  "tracing",
 ]
 
@@ -857,7 +857,7 @@ dependencies = [
  "hex",
  "rand 0.8.4",
  "serde",
- "serde_bare 0.4.0",
+ "serde_bare",
 ]
 
 [[package]]
@@ -880,12 +880,23 @@ dependencies = [
  "rand 0.8.4",
  "serde",
  "serde-big-array",
- "serde_bare 0.4.0",
+ "serde_bare",
  "sha2",
  "signature_bbs_plus",
  "signature_bls",
  "signature_core",
  "tracing",
+]
+
+[[package]]
+name = "ockam_executor"
+version = "0.1.0"
+dependencies = [
+ "futures 0.3.16",
+ "heapless",
+ "ockam_core",
+ "pin-project-lite",
+ "tokio",
 ]
 
 [[package]]
@@ -912,6 +923,7 @@ name = "ockam_node"
 version = "0.25.0-dev"
 dependencies = [
  "ockam_core",
+ "ockam_executor",
  "tokio",
  "tracing",
  "tracing-subscriber",
@@ -936,7 +948,7 @@ dependencies = [
  "ockam_node",
  "rand 0.7.3",
  "serde",
- "serde_bare 0.3.0",
+ "serde_bare",
  "tokio",
  "tracing",
 ]
@@ -949,7 +961,7 @@ dependencies = [
  "futures-util",
  "ockam_core",
  "ockam_node",
- "serde_bare 0.4.0",
+ "serde_bare",
  "tokio",
  "tokio-tungstenite",
  "tracing",
@@ -1313,18 +1325,8 @@ dependencies = [
 
 [[package]]
 name = "serde_bare"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "01db2255aa98fb93ad74272d8b2e6fd4851860e733e944b9439cf148127164b2"
-dependencies = [
- "serde",
-]
-
-[[package]]
-name = "serde_bare"
 version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "adbd09b1e0b45fadbc163e4ea1f4224b451146ba4f01963c69975780c33215fa"
+source = "git+ssh://git@github.com/ockam-network/serde_bare.git?branch=ockam-network/no_std+alloc#34fa8b1230c1d48af003035e53ba32997c82082b"
 dependencies = [
  "serde",
 ]
@@ -1810,8 +1812,7 @@ dependencies = [
 [[package]]
 name = "vsss-rs"
 version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b809fb740b3dbd450f411269eec820bbd29dee9268ea1b7c48a0f7e8f283bbb0"
+source = "git+https://github.com/antoinevg/vsss-rs.git?branch=antoinevg/no_std#00f27ce80c21ea7be7732e7fb3046779eab256ed"
 dependencies = [
  "ff",
  "group",
