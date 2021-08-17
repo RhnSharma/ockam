@@ -1,8 +1,9 @@
 use crate::{
     CredentialHolder, CredentialIssuer, CredentialProof, CredentialPublicKey,
     CredentialRequestFragment, CredentialVerifier, EntityError::IdentityApiFailed, Handle,
-    Identity, IdentityRequest, IdentityRequest::*, IdentityResponse as Res, MaybeContact, Profile,
-    ProfileIdentifier, ProfileState, SecureChannelTrait, TrustPolicyImpl,
+    Identity, IdentityRequest, IdentityRequest::*, IdentityResponse as Res, LeaseProtocolRequest,
+    LeaseProtocolResponse, MaybeContact, Profile, ProfileIdentifier, ProfileState,
+    SecureChannelTrait, TrustPolicyImpl,
 };
 use async_trait::async_trait;
 use core::result::Result::Ok;
@@ -355,6 +356,29 @@ impl Worker for EntityWorker {
                     err()
                 }
             }
+            GetLease(lease_manager_route, profile_id, org_id, bucket, ttl) => {
+                let profile = self.profile(&profile_id);
+                if let Ok(lease) =
+                    profile.get_lease(&lease_manager_route, org_id.clone(), bucket.clone(), ttl)
+                {
+                    ctx.send(reply, Res::Lease(lease)).await
+                } else {
+                    // Profile does not yet have a Lease. Try to request one
+                    let json = LeaseProtocolRequest::create(ttl, org_id, bucket).as_json();
+                    ctx.send(lease_manager_route.clone(), json).await?;
+                    let json = ctx.receive::<String>().await?;
+                    let lease_response = LeaseProtocolResponse::from_json(json.as_str());
+                    if lease_response.is_success() {
+                        ctx.send(reply, Res::Lease(lease_response.lease())).await
+                    } else {
+                        err()
+                    }
+                }
+            }
+
+            RevokeLease(lease_manager_route, profile_id, lease) => self
+                .profile(&profile_id)
+                .revoke_lease(&lease_manager_route, lease),
         }
     }
 }
