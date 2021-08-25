@@ -1,9 +1,9 @@
+use crate::tokio::sync::mpsc::{channel, Receiver, Sender};
 use crate::{
     error::Error, relay::RelayMessage, AddressRecord, NodeMessage, NodeReply, NodeReplyResult,
 };
 use ockam_core::compat::collections::BTreeMap;
 use ockam_core::{Address, AddressSet, Result};
-use tokio::sync::mpsc::{channel, Receiver, Sender};
 
 /// A combined address type and local worker router
 ///
