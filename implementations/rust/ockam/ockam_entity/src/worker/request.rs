@@ -4,6 +4,7 @@ use crate::{
     CredentialProof, CredentialPublicKey, CredentialRequest, CredentialSchema, EntityCredential,
     OfferId, PresentationManifest, ProfileChangeEvent, ProfileIdentifier, ProofRequestId,
 };
+use ockam_core::compat::{vec::Vec, string::String};
 use ockam_core::{Address, Route};
 use serde::{Deserialize, Serialize};
 
