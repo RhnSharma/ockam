@@ -79,8 +79,6 @@ where
     println!("block_future::end");
     return result;
 }
-#[cfg(not(feature = "std"))]
-pub use crate::tokio::runtime::block_future;
 
 #[doc(hidden)]
 #[cfg(feature = "std")]
@@ -91,3 +89,6 @@ where
 {
     task::spawn(f);
 }
+
+#[cfg(not(feature = "std"))]
+pub use crate::tokio::runtime::{block_future, spawn};

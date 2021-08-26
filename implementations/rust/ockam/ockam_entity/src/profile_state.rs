@@ -26,9 +26,9 @@ use signature_bbs_plus::{MessageGenerators, ProofOfPossession};
 use signature_core::challenge::Challenge;
 use signature_core::lib::{HiddenMessage, Message, Nonce, ProofMessage};
 
-#[cfg(not(feature = "std"))]
+#[cfg(feature = "unsafe_random")]
 use ockam_core::compat::rand::{thread_rng, RngCore};
-#[cfg(feature = "std")]
+#[cfg(not(feature = "unsafe_random"))]
 use rand::{thread_rng, CryptoRng, RngCore};
 
 /// Profile implementation

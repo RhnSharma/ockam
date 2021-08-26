@@ -163,9 +163,9 @@ pub mod sync {
     pub use std::sync::Arc;
 
     #[cfg(all(not(feature = "std"), feature = "alloc"))]
-    pub use spin::Mutex;
+    pub use spin::{Mutex, RwLock};
     #[cfg(feature = "std")]
-    pub use std::sync::Mutex;
+    pub use std::sync::{Mutex, RwLock};
 }
 
 /// std::task

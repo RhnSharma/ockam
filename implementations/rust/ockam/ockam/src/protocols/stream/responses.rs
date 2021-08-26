@@ -4,6 +4,7 @@ use crate::{
     protocols::{ParserFragment, ProtocolPayload},
     Any, Context, Message, ProtocolId, Result, Routed, Worker,
 };
+use ockam_core::compat::{vec::Vec, string::String};
 use serde::{Deserialize, Serialize};
 use serde_bare::Uint;
 
